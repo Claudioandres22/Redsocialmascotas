@@ -1,9 +1,8 @@
 package com.claudio.RedSocialMyPets.models;
-
-
 import jakarta.persistence.*;
-
 import java.util.List;
+
+
 
 @Entity
 @Table(name="usuarios")
@@ -26,8 +25,6 @@ import java.util.List;
         this.nombre = nombre;
         this.email = email;
         this.password = passdword;
-
-
 
 
     }

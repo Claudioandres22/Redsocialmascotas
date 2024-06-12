@@ -15,7 +15,7 @@ import java.util.List;
 public class PublicacionService {
 
     @Autowired
-    private PublicacionRepository postRepository;
+    private static PublicacionRepository postRepository;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -23,11 +23,14 @@ public class PublicacionService {
     @Autowired
     private MascotaRepository mascotaRepository;
 
-    public List<Publicacion> obtenerTodosLosPosts() {
+    public static List<Publicacion> obtenerTodosLosPosts() {
         return postRepository.findAll();
     }
 
-        public Publicacion guardarPost(Publicacion post, Long usuarioId, Long mascotaId) {
+    public static void eliminarPUblicacionPorId(long id) {
+    }
+
+    public Publicacion guardarPost(Publicacion post, Long usuarioId, Long mascotaId) {
         Usuario usuario = usuarioRepository.findById(usuarioId).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         Mascota mascota = mascotaRepository.findById(mascotaId).orElseThrow(() -> new RuntimeException("Mascota no encontrada"));
         post.setUsuario(usuario);
@@ -35,7 +38,7 @@ public class PublicacionService {
         return postRepository.save(post);
     }
 
-    public Publicacion obtenerPostPorId(Long id) {
+    public static Publicacion obtenerPUblicacionPorId(Long id) {
         return postRepository.findById(id).orElse(null);
     }
 
